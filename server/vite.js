@@ -1,18 +1,16 @@
-import { type Express } from "express";
-import { createServer as createViteServer, createLogger } from "vite";
-import { type Server } from "http";
-import viteConfig from "../vite.config";
-import fs from "fs";
-import path from "path";
-import { nanoid } from "nanoid";
+const { createServer: createViteServer, createLogger } = require("vite");
+const fs = require("fs");
+const path = require("path");
+const { nanoid } = require("nanoid");
+const viteConfig = require("../vite.config");
 
 const viteLogger = createLogger();
 
-export async function setupVite(server: Server, app: Express) {
+async function setupVite(server, app) {
   const serverOptions = {
     middlewareMode: true,
     hmr: { server, path: "/vite-hmr" },
-    allowedHosts: true as const,
+    allowedHosts: true,
   };
 
   const vite = await createViteServer({
@@ -29,30 +27,35 @@ export async function setupVite(server: Server, app: Express) {
     appType: "custom",
   });
 
+  // Use Vite's dev middleware
   app.use(vite.middlewares);
 
-  app.use("/{*path}", async (req, res, next) => {
+  // Catch-all route to serve index.html via Vite
+  app.use("/*", async (req, res, next) => {
     const url = req.originalUrl;
 
     try {
       const clientTemplate = path.resolve(
-        import.meta.dirname,
+        __dirname,
         "..",
         "client",
-        "index.html",
+        "index.html"
       );
 
-      // always reload the index.html file from disk incase it changes
+      // always reload the index.html file from disk in case it changes
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
-        `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`,
+        `src="/src/main.jsx"`,
+        `src="/src/main.jsx?v=${nanoid()}"`
       );
+
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
-      vite.ssrFixStacktrace(e as Error);
+      vite.ssrFixStacktrace(e);
       next(e);
     }
   });
 }
+
+module.exports = { setupVite };
