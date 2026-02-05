@@ -1,0 +1,72 @@
+Design a cinematic, futuristic full-stack developer portfolio website with a dark Milky Way theme.
+
+Overall style:
+
+* Dark cosmic background with subtle animated stars
+* Mouse cursor generates a star trail that follows movement
+* When cursor stops, stars orbit around it
+* Smooth scrolling transitions between sections
+* Modern glassmorphism + neon green accent highlights
+* Clean typography with a tech aesthetic
+
+Sections:
+
+1. Hero / Greeting Section:
+
+* Animated terminal typing intro that prints my name and roles
+* Subtitle rotates between developer titles
+* Floating 3D tech icons in background
+* Call-to-action buttons: “View Projects” and “Download Resume”
+* Subtle parallax star animation
+
+2. About Me:
+
+* Elegant card layout with animated entrance
+* Short personal summary
+* Developer stats (years of experience, projects completed)
+* Minimal futuristic UI elements
+
+3. Experience & Education:
+
+* Interactive vertical timeline
+* Expandable cards with company logos
+* Separate tabs for work and education
+* Smooth hover animations
+
+4. Projects:
+
+* Responsive grid of project cards
+* Each card shows preview image, title, and tech stack
+* Buttons for Live Demo and GitHub
+* Clicking opens a full-screen modal
+* Modal includes image carousel with left/right navigation
+* Detailed case study describing problems solved
+* Animated transitions
+
+5. Skills:
+
+* Interactive skills visualization grouped by categories
+* Technology icons with labels
+* Hover reveals proficiency and descriptions
+* Futuristic dashboard aesthetic
+
+6. Contact:
+
+* Animated contact form
+* Social media icons with glow hover effects
+* Email, address, and links clearly displayed
+* Availability status indicator
+
+Interactions:
+
+* Hovering buttons creates a neon green glow pulse
+* Clicking buttons triggers a subtle screen shake effect
+* Micro-interactions on scroll and hover
+* Fully responsive and mobile optimized
+
+Design goals:
+
+* Professional, immersive, and memorable
+* Clean layout with strong visual hierarchy
+* Smooth performance and accessibility
+* Suitable for a high-end full-stack developer portfolio
