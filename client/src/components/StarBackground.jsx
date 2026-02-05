@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 export default function StarBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef(null);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
 
   useEffect(() => {
@@ -11,26 +11,11 @@ export default function StarBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationFrameId: number;
-    let stars: Star[] = [];
-    let mouseTrail: { x: number; y: number; age: number }[] = [];
-    
-    interface Star {
-      x: number;
-      y: number;
-      z: number;
-      size: number;
-      baseX: number;
-      baseY: number;
-      angle: number;
-      distance: number;
-      isFollowing: boolean;
-      update: () => void;
-      draw: () => void;
-    }
+    let animationFrameId;
+    let stars = [];
 
-    const createStar = (): Star => {
-      let s = {
+    const createStar = () => {
+      const s = {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         z: Math.random() * 2 + 0.5,
@@ -40,7 +25,7 @@ export default function StarBackground() {
         angle: Math.random() * Math.PI * 2,
         distance: Math.random() * 100 + 50,
         isFollowing: false,
-        update: function() {
+        update: function () {
           if (mouseRef.current.active) {
             const dx = mouseRef.current.x - this.x;
             const dy = mouseRef.current.y - this.y;
@@ -51,7 +36,7 @@ export default function StarBackground() {
               const force = (300 - dist) / 300;
               this.x += dx * 0.05 * force;
               this.y += dy * 0.05 * force;
-              
+
               if (dist < 50) {
                 this.angle += 0.05;
                 this.x = mouseRef.current.x + Math.cos(this.angle) * 30;
@@ -67,13 +52,13 @@ export default function StarBackground() {
             if (this.y < 0) this.y = canvas.height;
           }
         },
-        draw: function() {
+        draw: function () {
           if (!ctx) return;
           ctx.fillStyle = "white";
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
           ctx.fill();
-        }
+        },
       };
       s.baseX = s.x;
       s.baseY = s.y;
@@ -96,13 +81,17 @@ export default function StarBackground() {
 
     const draw = () => {
       // Darker background for Milky Way effect
-      ctx.fillStyle = "rgba(5, 5, 10, 0.2)"; 
+      ctx.fillStyle = "rgba(5, 5, 10, 0.2)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
+
       // Milky Way glow
       const gradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, canvas.width
+        canvas.width / 2,
+        canvas.height / 2,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        canvas.width
       );
       gradient.addColorStop(0, "rgba(20, 20, 60, 0.1)");
       gradient.addColorStop(0.5, "rgba(10, 10, 30, 0.05)");
@@ -110,7 +99,7 @@ export default function StarBackground() {
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      stars.forEach(star => {
+      stars.forEach((star) => {
         star.update();
         star.draw();
       });
@@ -126,7 +115,8 @@ export default function StarBackground() {
             mouseRef.current.x + Math.cos(angle) * r,
             mouseRef.current.y + Math.sin(angle) * r,
             Math.random() * 1.5,
-            0, Math.PI * 2
+            0,
+            Math.PI * 2
           );
           ctx.fill();
         }
@@ -135,7 +125,7 @@ export default function StarBackground() {
       animationFrameId = requestAnimationFrame(draw);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e) => {
       mouseRef.current = { x: e.clientX, y: e.clientY, active: true };
     };
 
@@ -146,7 +136,7 @@ export default function StarBackground() {
     window.addEventListener("resize", resizeCanvas);
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
-    
+
     resizeCanvas();
     draw();
 
@@ -158,10 +148,5 @@ export default function StarBackground() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 z-[-1] bg-black"
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed inset-0 z-[-1] bg-black" />;
 }

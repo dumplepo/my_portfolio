@@ -5,36 +5,40 @@ import { Card } from "@/components/ui/card";
 const repositories = [
   {
     name: "quantum-engine",
-    description: "A high-performance parallel processing engine for complex physics simulations.",
+    description:
+      "A high-performance parallel processing engine for complex physics simulations.",
     language: "Rust",
     stars: 128,
     updated: "2 days ago",
-    status: "public"
+    status: "public",
   },
   {
     name: "nexus-ui-kit",
-    description: "Modern glassmorphism component library with neon accents and accessible primitives.",
+    description:
+      "Modern glassmorphism component library with neon accents and accessible primitives.",
     language: "TypeScript",
     stars: 450,
     updated: "5 hours ago",
-    status: "public"
+    status: "public",
   },
   {
     name: "neural-api",
-    description: "FastAPI wrapper for distributed inference across multiple GPU clusters.",
+    description:
+      "FastAPI wrapper for distributed inference across multiple GPU clusters.",
     language: "Python",
     stars: 89,
     updated: "1 week ago",
-    status: "private"
+    status: "private",
   },
   {
     name: "stellar-db",
-    description: "Distributed graph database optimized for celestial body mapping and trajectory prediction.",
+    description:
+      "Distributed graph database optimized for celestial body mapping and trajectory prediction.",
     language: "Go",
     stars: 215,
     updated: "3 days ago",
-    status: "public"
-  }
+    status: "public",
+  },
 ];
 
 export default function Repositories() {
@@ -59,13 +63,14 @@ export default function Repositories() {
                   <div className="p-2 bg-primary/10 rounded-lg text-primary">
                     <GitBranch size={20} />
                   </div>
+
                   {repo.status === "private" ? (
                     <Lock size={14} className="text-gray-500" />
                   ) : (
                     <Globe size={14} className="text-primary/50" />
                   )}
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-orbitron font-bold text-white group-hover:text-primary transition-colors">
                     {repo.name}
@@ -87,6 +92,7 @@ export default function Repositories() {
                     <span>{repo.stars}</span>
                   </div>
                 </div>
+
                 <div className="flex items-center gap-1">
                   <Clock size={12} />
                   <span>{repo.updated}</span>

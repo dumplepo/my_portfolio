@@ -15,16 +15,18 @@ export default function Navigation() {
     { href: "#contact", label: "Contact" },
   ];
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScroll = (e, href) => {
     e.preventDefault();
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
+
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
     }
+
     setIsOpen(false);
   };
 
@@ -48,8 +50,9 @@ export default function Navigation() {
             {link.label}
           </a>
         ))}
-        <Button 
-          variant="outline" 
+
+        <Button
+          variant="outline"
           className="border-primary text-primary hover:bg-primary hover:text-black font-orbitron rounded-none skew-x-[-10deg] neon-blink-hover vibrate-active"
         >
           RESUME
@@ -57,7 +60,7 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Toggle */}
-      <button 
+      <button
         className="md:hidden text-primary"
         onClick={() => setIsOpen(!isOpen)}
       >
