@@ -45,7 +45,7 @@ export default function ScrollToTop() {
           </Button>
         </motion.div>
       )}
-      {isVisible && (
+        {isVisible && (
         <motion.div
           initial={{ opacity: 0, x: 20 }} // Slide in from the right
           animate={{ opacity: 1, x: 0 }}

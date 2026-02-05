@@ -1,16 +1,18 @@
-const { createServer: createViteServer, createLogger } = require("vite");
-const fs = require("fs");
-const path = require("path");
-const { nanoid } = require("nanoid");
-const viteConfig = require("../vite.config");
+import { type Express } from "express";
+import { createServer as createViteServer, createLogger } from "vite";
+import { type Server } from "http";
+import viteConfig from "../vite.config";
+import fs from "fs";
+import path from "path";
+import { nanoid } from "nanoid";
 
 const viteLogger = createLogger();
 
-async function setupVite(server, app) {
+export async function setupVite(server: Server, app: Express) {
   const serverOptions = {
     middlewareMode: true,
     hmr: { server, path: "/vite-hmr" },
-    allowedHosts: true,
+    allowedHosts: true as const,
   };
 
   const vite = await createViteServer({
@@ -27,35 +29,30 @@ async function setupVite(server, app) {
     appType: "custom",
   });
 
-  // Use Vite's dev middleware
   app.use(vite.middlewares);
 
-  // Catch-all route to serve index.html via Vite
-  app.use("/*", async (req, res, next) => {
+  app.use("/{*path}", async (req, res, next) => {
     const url = req.originalUrl;
 
     try {
       const clientTemplate = path.resolve(
-        __dirname,
+        import.meta.dirname,
         "..",
         "client",
-        "index.html"
+        "index.html",
       );
 
-      // always reload the index.html file from disk in case it changes
+      // always reload the index.html file from disk incase it changes
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
-        `src="/src/main.jsx"`,
-        `src="/src/main.jsx?v=${nanoid()}"`
+        `src="/src/main.tsx"`,
+        `src="/src/main.tsx?v=${nanoid()}"`,
       );
-
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
-      vite.ssrFixStacktrace(e);
+      vite.ssrFixStacktrace(e as Error);
       next(e);
     }
   });
 }
-
-module.exports = { setupVite };

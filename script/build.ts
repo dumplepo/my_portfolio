@@ -1,6 +1,6 @@
-const { build: esbuild } = require("esbuild");
-const { build: viteBuild } = require("vite");
-const { rm, readFile } = require("fs/promises");
+import { build as esbuild } from "esbuild";
+import { build as viteBuild } from "vite";
+import { rm, readFile } from "fs/promises";
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -33,15 +33,13 @@ const allowlist = [
 ];
 
 async function buildAll() {
-  // Remove previous build
   await rm("dist", { recursive: true, force: true });
 
   console.log("building client...");
   await viteBuild();
 
   console.log("building server...");
-  const pkgJson = await readFile("package.json", "utf-8");
-  const pkg = JSON.parse(pkgJson);
+  const pkg = JSON.parse(await readFile("package.json", "utf-8"));
   const allDeps = [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.devDependencies || {}),
@@ -63,7 +61,6 @@ async function buildAll() {
   });
 }
 
-// Run the build and handle errors
 buildAll().catch((err) => {
   console.error(err);
   process.exit(1);

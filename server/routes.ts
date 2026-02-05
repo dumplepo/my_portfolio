@@ -1,6 +1,11 @@
-const { storage } = require("./storage");
+import type { Express } from "express";
+import { createServer, type Server } from "http";
+import { storage } from "./storage";
 
-async function registerRoutes(httpServer, app) {
+export async function registerRoutes(
+  httpServer: Server,
+  app: Express
+): Promise<Server> {
   // put application routes here
   // prefix all routes with /api
 
@@ -9,5 +14,3 @@ async function registerRoutes(httpServer, app) {
 
   return httpServer;
 }
-
-module.exports = { registerRoutes };
