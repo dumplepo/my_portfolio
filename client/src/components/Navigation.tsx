@@ -15,6 +15,19 @@ export default function Navigation() {
     { href: "#contact", label: "Contact" },
   ];
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 p-6 flex justify-between items-center mix-blend-difference text-white">
       <Link href="/">
@@ -29,6 +42,7 @@ export default function Navigation() {
           <a
             key={link.href}
             href={link.href}
+            onClick={(e) => handleScroll(e, link.href)}
             className="font-rajdhani text-lg font-medium hover:text-primary transition-colors tracking-wide"
           >
             {link.label}
@@ -63,7 +77,7 @@ export default function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="font-orbitron text-2xl hover:text-primary transition-colors neon-text"
               >
                 {link.label}

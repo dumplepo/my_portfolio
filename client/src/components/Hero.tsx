@@ -5,6 +5,18 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
       
@@ -54,7 +66,7 @@ export default function Hero() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="flex flex-col md:flex-row gap-6 justify-center pt-10"
         >
-          <a href="#projects">
+          <a href="#projects" onClick={(e) => handleScroll(e, "#projects")}>
             <Button 
               size="lg" 
               className="bg-primary text-black hover:bg-primary/80 font-orbitron text-lg px-8 py-6 rounded-none skew-x-[-10deg] border-2 border-transparent hover:border-white transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)] neon-blink-hover vibrate-active"
@@ -62,7 +74,7 @@ export default function Hero() {
               VIEW PROJECTS
             </Button>
           </a>
-          <a href="#contact">
+          <a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>
             <Button 
               size="lg" 
               variant="outline"
