@@ -9,11 +9,13 @@ import { useState } from "react";
 const initialProjects = [
   {
     id: 1,
-    title: "Neon Dashboard",
-    category: "Data Visualization",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
-    tech: ["React", "D3.js", "Tailwind"],
-    description: "A high-performance real-time analytics dashboard for monitoring server metrics across distributed systems.",
+    title: "Resume Screening AI",
+    category: "Machine Learning",
+    image: "/public/images/resume.png",
+    tech: ["Groq API", "LLaMA3", "Streamlit", "Python", "FastAPI", "PyMuPDF", "OCR", "JSON Schema"],
+    description: "This AI resume screening tool enables companies to conduct recruitment faster and smarter by utilizing OCR technology to scan resumes and LLaMA 3 to interpret their content, thereby rapidly evaluating and categorizing applicants (as finalists, on hold, or rejected).",
+    livedemo: "https://resume-screening-ai-ct5hlbyrzyu78bf7gvrguc.streamlit.app",
+    githublink: "https://github.com/dumplepo/Resume_screening_ai.git",
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ const initialProjects = [
     image: "https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=2808&auto=format&fit=crop",
     tech: ["Next.js", "Stripe", "PostgreSQL"],
     description: "A fully headless e-commerce solution with 3D product previews and AI-powered recommendations.",
+    livedemo: "",
+    githublink: "",
   },
   {
     id: 3,
@@ -30,6 +34,8 @@ const initialProjects = [
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop",
     tech: ["Socket.io", "Express", "Redis"],
     description: "End-to-end encrypted messaging platform with self-destructing messages and cyberpunk UI themes.",
+    livedemo: "",
+    githublink: "",
   },
   {
     id: 4,
@@ -38,6 +44,8 @@ const initialProjects = [
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop",
     tech: ["Python", "TensorFlow", "FastAPI"],
     description: "An interface for generative AI models allowing users to create assets for games and movies.",
+    livedemo: "",
+    githublink: "",
   },
 ];
 
@@ -46,18 +54,18 @@ export default function Projects() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [newItem, setNewItem] = useState({ title: "", category: "", image: "", description: "", tech: "" });
 
-  const addItem = () => {
-    if (newItem.title && newItem.category) {
-      setItems([{ 
-        ...newItem, 
-        id: Date.now(), 
-        image: newItem.image || "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop",
-        tech: newItem.tech.split(",").map(t => t.trim())
-      }, ...items]);
-      setNewItem({ title: "", category: "", image: "", description: "", tech: "" });
-      setIsDialogOpen(false);
-    }
-  };
+  // const addItem = () => {
+  //   if (newItem.title && newItem.category) {
+  //     setItems([{ 
+  //       ...newItem, 
+  //       id: Date.now(), 
+  //       image: newItem.image || "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop",
+  //       tech: newItem.tech.split(",").map(t => t.trim())
+  //     }, ...items]);
+  //     setNewItem({ title: "", category: "", image: "", description: "", tech: "" });
+  //     setIsDialogOpen(false);
+  //   }
+  // };
 
   const removeItem = (id: number) => {
     setItems(items.filter(item => item.id !== id));
@@ -81,7 +89,7 @@ export default function Projects() {
               <Input placeholder="Image URL (optional)" value={newItem.image} onChange={e => setNewItem({...newItem, image: e.target.value})} className="bg-white/5 border-white/10" />
               <Input placeholder="Technologies (comma separated)" value={newItem.tech} onChange={e => setNewItem({...newItem, tech: e.target.value})} className="bg-white/5 border-white/10" />
               <Textarea placeholder="Description" value={newItem.description} onChange={e => setNewItem({...newItem, description: e.target.value})} className="bg-white/5 border-white/10" />
-              <Button onClick={addItem} className="w-full bg-primary text-black font-orbitron font-bold">PUBLISH PROJECT</Button>
+              {/* <Button onClick={addItem} className="w-full bg-primary text-black font-orbitron font-bold">PUBLISH PROJECT</Button> */}
             </div>
           </DialogContent>
         </Dialog>
@@ -166,10 +174,12 @@ function ProjectCard({ project, index, onRemove }: any) {
 
               <div className="flex gap-4 pt-4">
                 <Button className="flex-1 bg-primary text-black hover:bg-white font-bold font-orbitron neon-blink-hover vibrate-active">
-                  <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
+                  {/* <ExternalLink className="w-4 h-4 mr-2" /> Live Demo */}
+                  <a href={project.livedemo} target="_blank" rel="noopener noreferrer">Live Demo</a>
                 </Button>
                 <Button variant="outline" className="flex-1 border-white/20 hover:bg-white/10 font-orbitron neon-blink-hover vibrate-active">
-                  <Github className="w-4 h-4 mr-2" /> Source
+                  {/* <Github className="w-4 h-4 mr-2" /> Source */}
+                  <a href={project.githublink} target="_blank" rel="noopener noreferrer">Source</a>
                 </Button>
               </div>
            </div>
