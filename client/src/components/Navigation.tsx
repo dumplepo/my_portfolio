@@ -32,7 +32,7 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-40 p-6 flex justify-between items-center mix-blend-difference text-white">
       <Link href="/">
         <a className="text-2xl font-orbitron font-bold tracking-widest hover:text-primary transition-colors neon-text">
-          Jonas Pedersen
+          Chris Matsumoto
         </a>
       </Link>
 

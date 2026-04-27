@@ -46,10 +46,11 @@ export default function Hero() {
             <Typewriter
               options={{
                 strings: [
-                  "Senior Full Stack Developer",
-                  "UI/UX Architect",
-                  "Full Stack AI Developer",
-                  "Full Stack Blockchain Developer",
+                  "AI Engineer | Computer Vision, Machine Learning, Data Science, Generate AI",
+                  "Senior AI Engineer",
+                  "Machine Learning Engineer",
+                  "Computer Vision Developer",
+                  "Full Stack Developer",
                 ],
                 autoStart: true,
                 loop: true,

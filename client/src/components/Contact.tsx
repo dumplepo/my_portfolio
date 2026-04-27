@@ -25,14 +25,14 @@ export default function Contact() {
                  <div className="p-3 bg-white/5 rounded-full border border-white/10">
                    <Mail className="w-6 h-6" />
                  </div>
-                 <span className="font-rajdhani text-lg">dumple.po@gamil.com</span>
+                 <span className="font-rajdhani text-lg">chrismatsmoto1226@outlook.com</span>
                </div>
                
                <div className="flex items-center gap-4 text-gray-300 hover:text-primary transition-colors">
                  <div className="p-3 bg-white/5 rounded-full border border-white/10">
                    <MapPin className="w-6 h-6" />
                  </div>
-                 <span className="font-rajdhani text-lg">Copenhagen, Denmark</span>
+                 <span className="font-rajdhani text-lg">Apopka, Florida,</span>
                </div>
              </div>
 
@@ -40,7 +40,7 @@ export default function Contact() {
                {[Github, Linkedin, Twitter].map((Icon, i) => (
                  <a key={0} href="https://github.com/dumplepo" target="_blink" className="p-3 bg-white/5 rounded-full border border-white/10 hover:border-primary hover:text-primary hover:shadow-[0_0_15px_rgba(57,255,20,0.3)] transition-all">
                    <Icon className="w-6 h-6" />
-                 </a>
+                 </a>              
                ))}
              </div>
           </div>
@@ -68,7 +68,7 @@ export default function Contact() {
       </div>
       
       <footer className="mt-20 text-center text-gray-500 font-rajdhani text-sm">
-        <p>© 2026 Jonas Pedersen. ALL RIGHTS RESERVED.</p>
+        <p>© 2026 Chris Matsmoto. ALL RIGHTS RESERVED.</p>
         <p className="text-xs mt-2">DESIGNED & BUILT WITH REACT & TAILWIND</p>
       </footer>
     </section>

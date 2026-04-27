@@ -24,7 +24,7 @@ export default function About() {
           </h2>
           <div className="glass-panel p-8 rounded-2xl space-y-6 text-lg font-space text-gray-300 leading-relaxed border-l-4 border-primary">
             <p>
-              Senior software developer with over 9 years of experience, proficient in full-stack and front-end development. I worked for companies like Geomar SA, Vodafone UK, and Beqom, as well as startups like VoCoVo. I'm a problem solver with a can do attitude, always ready to develop new solutions and offer another perspective. I have spent the last time learning and using the latest software tools and patterns to build great apps.
+              I’m an AI engineer with about 8 years of experience working on machine learning, computer vision, and automation systems. My main gig is building scalable, production-ready AI—basically, taking models from concept to something businesses can actually use. I’m hands-on across the whole stack, from training and fine-tuning models to deploying and integrating them. My focus is mostly on LLMs, NLP, and enterprise AI, but I’ve also worked with a few startups to turn cutting-edge AI into real-world solutions that actually solve problems.  
             </p>
           </div>
           

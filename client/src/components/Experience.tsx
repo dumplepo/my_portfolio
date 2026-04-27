@@ -9,25 +9,46 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 const initialExperiences = [
   {
     id: 1,
-    year: "2023 - Present",
-    title: "Senior Full Stack Engineer",
-    company: "Nebula Tech Solutions",
-    description: "Leading a team of developers to build scalable SaaS platforms using React, Node.js, and AWS.",
+    year: "Jan/2023 - Dec/2025",
+    title: "Senior Software Engineer",
+    company: "Hebbia",
+    description: "I built an LLM-powered summarization pipeline with PyTorch and HuggingFace Transformers, deployed scalable AI inference services using FastAPI, Docker, and AWS, and created automated knowledge assistants integrated into enterprise tools, all of which improved system efficiency, reduced model latency by 35%, and boosted research productivity by 40%.",
   },
   {
     id: 2,
-    year: "2021 - 2023",
-    title: "Frontend Developer",
-    company: "CyberSpace Agency",
-    description: "Crafted award-winning interactive websites and 3D web experiences using Three.js and WebGL.",
+    year: "Nov/2020 - Oct/2022",
+    title: "ML Engineer",
+    company: "Tecton",
+    description: "I trained and optimized NLP chatbot models with TensorFlow and BERT, built sentiment analysis workflows with Scikit-learn and spaCy, managed ML pipelines using Airflow and PostgreSQL, and enhanced recommendation algorithms with XGBoost, all of which boosted automation, campaign targeting, message processing, and customer response rates.",
   },
   {
     id: 3,
-    year: "2019 - 2021",
-    title: "Junior Developer",
-    company: "StartUp Inc",
-    description: "Developed and maintained internal tools and client-facing dashboards.",
+    year: "Jun/2019 - May/2020",
+    title: "Computer Vision Developer",
+    company: "Renovai",
+    description: "I improved image preprocessing with OpenCV and NumPy, trained deep learning models with TensorFlow for biological data, and built computer vision APIs with FastAPI and Docker, reducing analysis time by 35%, increasing detection accuracy by 28%, and enabling automated processing of 200+ experiments per day.",
+  },  
+  {
+    id: 4,
+    year: "Jun/2017 - May/2019",
+    title: "Full Stack Developer",
+    company: "PACT Pharma",
+    description: "I built a localization platform with React, Node.js, and PostgreSQL, streamlined data pipelines using Python and Redis to handle 500K+ translation tasks monthly, and created analytics dashboards with React and D3.js, improving project tracking efficiency by 35%.",
   },
+  {
+    id: 5,
+    year: "Aug/2013 - May/2017",
+    title: "Education",
+    company: "California State University, East Bay",
+    description: "Bachelor of Science in Computer Science",
+  },
+  // {
+  //   id: 3,
+  //   year: "2019 - 2021",
+  //   title: "Junior Developer",
+  //   company: "StartUp Inc",
+  //   description: "Developed and maintained internal tools and client-facing dashboards.",
+  // },
 ];
 
 export default function Experience() {
