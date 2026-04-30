@@ -1,12 +1,37 @@
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaPython, FaDocker, FaAws, FaGitAlt } from "react-icons/fa";
-import { SiTypescript, SiTailwindcss, SiPostgresql, SiNextdotjs } from "react-icons/si";
+import { FaReact, FaNodeJs, FaDocker, FaAws, FaBrain, FaChartLine, FaProjectDiagram, FaEye } from "react-icons/fa";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiPostgresql,
+  SiNextdotjs,
+  SiPython,
+  SiPytorch,
+  SiTensorflow,
+  SiOpencv,
+  SiNumpy,
+  SiOpenai,
+  SiHuggingface,
+  SiLangchain,
+} from "react-icons/si";
 
 const skills = [
+  { name: "Python", icon: SiPython, level: 88 },
+  { name: "NumPy", icon: SiNumpy, level: 85 },
+  { name: "Machine Learning", icon: FaChartLine, level: 82 },
+  { name: "Deep Learning", icon: FaBrain, level: 80 },
+  { name: "Neural Networks", icon: FaProjectDiagram, level: 78 },
+  { name: "PyTorch", icon: SiPytorch, level: 78 },
+  { name: "TensorFlow", icon: SiTensorflow, level: 72 },
+  { name: "Computer Vision", icon: FaEye, level: 75 },
+  { name: "OpenCV", icon: SiOpencv, level: 74 },
+  { name: "NLP", icon: SiHuggingface, level: 78 },
+  { name: "LLM", icon: SiOpenai, level: 80 },
+  { name: "RAG", icon: SiLangchain, level: 76 },
   { name: "React", icon: FaReact, level: 90 },
   { name: "TypeScript", icon: SiTypescript, level: 85 },
-  { name: "Node.js", icon: FaNodeJs, level: 80 },
   { name: "Next.js", icon: SiNextdotjs, level: 85 },
+  { name: "Node.js", icon: FaNodeJs, level: 80 },
   { name: "Tailwind", icon: SiTailwindcss, level: 95 },
   { name: "PostgreSQL", icon: SiPostgresql, level: 75 },
   { name: "Docker", icon: FaDocker, level: 70 },
@@ -23,22 +48,22 @@ export default function Skills() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {skills.map((skill, index) => (
           <motion.div
-            key={index}
+            key={`${skill.name}-${index}`}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.05 }}
-            transition={{ delay: index * 0.05 }}
+            transition={{ delay: index * 0.04 }}
             className="glass-card p-6 rounded-xl flex flex-col items-center justify-center gap-4 group relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            
+
             <skill.icon className="text-5xl text-gray-400 group-hover:text-primary transition-colors duration-300 z-10" />
-            
+
             <div className="text-center z-10">
               <h3 className="font-orbitron font-bold text-white">{skill.name}</h3>
               <div className="w-full bg-white/10 h-1 mt-3 rounded-full overflow-hidden w-24 mx-auto">
-                <motion.div 
+                <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   transition={{ duration: 1, delay: 0.5 }}
