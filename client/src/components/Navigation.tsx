@@ -30,11 +30,11 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 p-6 flex justify-between items-center mix-blend-difference text-white">
-      {/* <Link href="/">
+      <Link href="/">
         <a className="text-2xl font-orbitron font-bold tracking-widest hover:text-primary transition-colors neon-text">
           Chris Matsumoto
         </a>
-      </Link> */}
+      </Link>
 
       {/* Desktop Nav */}
       <div className="hidden md:flex gap-8 items-center">
