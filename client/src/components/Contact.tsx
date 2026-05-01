@@ -68,7 +68,7 @@ export default function Contact() {
       </div>
       
       <footer className="mt-20 text-center text-gray-500 font-rajdhani text-sm">
-        <p>© 2026 Chris Matsmoto. ALL RIGHTS RESERVED.</p>
+        {/* <p>© 2026 Chris Matsmoto. ALL RIGHTS RESERVED.</p> */}
         <p className="text-xs mt-2">DESIGNED & BUILT WITH REACT & TAILWIND</p>
       </footer>
     </section>
