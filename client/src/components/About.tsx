@@ -1,12 +1,100 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Code, Terminal, Cpu } from "lucide-react";
+import { Code, Cpu } from "lucide-react";
 
 export default function About() {
   const stats = [
     { label: "Years Experience", value: "8+" },
     { label: "Projects Built", value: "50+" },
     { label: "Happy Clients", value: "20+" },
+  ];
+  const pythonLines = [
+    [
+      { text: "import", className: "text-violet-300" },
+      { text: " numpy", className: "text-cyan-300" },
+      { text: " as", className: "text-violet-300" },
+      { text: " np", className: "text-blue-300" },
+    ],
+    [
+      { text: "from", className: "text-violet-300" },
+      { text: " sklearn.model_selection", className: "text-cyan-300" },
+      { text: " import", className: "text-violet-300" },
+      { text: " train_test_split", className: "text-yellow-300" },
+    ],
+    [
+      { text: "from", className: "text-violet-300" },
+      { text: " sklearn.ensemble", className: "text-cyan-300" },
+      { text: " import", className: "text-violet-300" },
+      { text: " RandomForestClassifier", className: "text-yellow-300" },
+    ],
+    [{ text: "", className: "text-white" }],
+    [
+      { text: "X", className: "text-blue-300" },
+      { text: " = ", className: "text-white/80" },
+      { text: "dataset", className: "text-blue-300" },
+      { text: ".drop", className: "text-yellow-300" },
+      { text: "(", className: "text-white/80" },
+      { text: "'label'", className: "text-emerald-300" },
+      { text: ", axis=", className: "text-white/80" },
+      { text: "1", className: "text-orange-300" },
+      { text: ")", className: "text-white/80" },
+    ],
+    [
+      { text: "y", className: "text-blue-300" },
+      { text: " = ", className: "text-white/80" },
+      { text: "dataset", className: "text-blue-300" },
+      { text: "[", className: "text-white/80" },
+      { text: "'label'", className: "text-emerald-300" },
+      { text: "]", className: "text-white/80" },
+    ],
+    [
+      { text: "X_train", className: "text-blue-300" },
+      { text: ", ", className: "text-white/80" },
+      { text: "X_test", className: "text-blue-300" },
+      { text: ", ", className: "text-white/80" },
+      { text: "y_train", className: "text-blue-300" },
+      { text: ", ", className: "text-white/80" },
+      { text: "y_test", className: "text-blue-300" },
+      { text: " = ", className: "text-white/80" },
+      { text: "train_test_split", className: "text-yellow-300" },
+      { text: "(", className: "text-white/80" },
+    ],
+    [
+      { text: "    X, y, test_size=", className: "text-white/80" },
+      { text: "0.2", className: "text-orange-300" },
+      { text: ", random_state=", className: "text-white/80" },
+      { text: "42", className: "text-orange-300" },
+    ],
+    [{ text: ")", className: "text-white/80" }],
+    [{ text: "", className: "text-white" }],
+    [
+      { text: "model", className: "text-blue-300" },
+      { text: " = ", className: "text-white/80" },
+      { text: "RandomForestClassifier", className: "text-yellow-300" },
+      { text: "(n_estimators=", className: "text-white/80" },
+      { text: "300", className: "text-orange-300" },
+      { text: ")", className: "text-white/80" },
+    ],
+    [
+      { text: "model", className: "text-blue-300" },
+      { text: ".fit", className: "text-yellow-300" },
+      { text: "(X_train, y_train)", className: "text-white/80" },
+    ],
+    [
+      { text: "predictions", className: "text-blue-300" },
+      { text: " = ", className: "text-white/80" },
+      { text: "model", className: "text-blue-300" },
+      { text: ".predict", className: "text-yellow-300" },
+      { text: "(X_test)", className: "text-white/80" },
+    ],
+    [
+      { text: "print", className: "text-yellow-300" },
+      { text: "(", className: "text-white/80" },
+      { text: "'Accuracy:'", className: "text-emerald-300" },
+      { text: ", (predictions == y_test).mean()", className: "text-white/80" },
+      { text: ")", className: "text-white/80" },
+    ],
+    [{ text: "# Model pipeline complete", className: "text-gray-400" }],
   ];
 
   return (
@@ -56,8 +144,29 @@ export default function About() {
               className="absolute inset-4 border border-white/10 rounded-full"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-               <div className="relative w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-pulse" />
-               <Terminal className="absolute w-16 h-16 text-primary" />
+              <div className="relative w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-pulse" />
+              <div className="absolute w-56 h-36 glass-panel border border-primary/30 rounded-xl overflow-hidden bg-black/40">
+                <div className="h-8 px-3 flex items-center border-b border-white/10 font-rajdhani text-xs text-primary/90 tracking-wider">
+                  python train_model.py
+                </div>
+                <div className="h-[calc(100%-2rem)] overflow-hidden px-3 py-2 font-mono text-[11px] text-primary/90 leading-5">
+                  <motion.div
+                    className="space-y-0"
+                    animate={{ y: ["0%", "-50%"] }}
+                    transition={{ duration: 12, ease: "linear", repeat: Infinity }}
+                  >
+                    {[...pythonLines, ...pythonLines].map((line, index) => (
+                      <div key={index} className="whitespace-pre">
+                        {line.map((segment, segmentIndex) => (
+                          <span key={`${index}-${segmentIndex}`} className={segment.className}>
+                            {segment.text}
+                          </span>
+                        ))}
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
+              </div>
             </div>
             
             {/* Orbiting Cards */}
